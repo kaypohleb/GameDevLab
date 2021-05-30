@@ -6,11 +6,12 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioClip[] audioClips;
     AudioSource[] audioSource;
+    bool loaded;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponents<AudioSource>();
-        playThemeSound();
+        loaded = false;
     }
 
     // Update is called once per frame
@@ -54,12 +55,18 @@ public class AudioManager : MonoBehaviour
         audioSource[0].PlayOneShot(audioClips[6]);
     }
 
-    public void playThemeSound(){
-        if(audioSource[1].isPlaying){
-            audioSource[1].Stop();
+    public void playThemeSound(bool mode){
+        if(mode){
+            if(!loaded){
+                audioSource[1].loop = true;
+                audioSource[1].clip = audioClips[10];
+                loaded = true;
+            }
+            if(!audioSource[1].isPlaying){
+                audioSource[1].Play();
+            }
+        }else{
+            audioSource[1].Pause();
         }
-        audioSource[1].loop = true;
-        audioSource[1].clip = audioClips[10];
-        audioSource[1].Play();
     }
 }

@@ -111,7 +111,7 @@ public class MarioController : MonoBehaviour
                marioBody.AddForce(new Vector2(moveInput * speed,0));
             }
         }
-        if(touchedPole && isGrounded && preventMovement){
+        if(touchedPole && isGrounded && preventMovement &&!touchedEnding){
             if (marioBody.velocity.magnitude < MAXSPEED){
                Debug.Log("Pushing Mario");
                marioBody.AddForce(new Vector2(1 * speed,0));
@@ -209,6 +209,7 @@ public class MarioController : MonoBehaviour
                 break;
             case "End":
                 touchedEnding = true;
+                Destroy(gameObject);
                 break;
         }
         

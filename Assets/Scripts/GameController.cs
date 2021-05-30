@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject PauseScreen;
     [SerializeField] GameObject MarioPreFab;
     MarioController MarioControl;
+    AudioManager audioManager;
     GameObject Mario;
     public Collider2D PoleCollider;
     Text PauseText;
@@ -30,7 +31,8 @@ public class GameController : MonoBehaviour
         hasStarted = false;
         gameEnded = false;
         gameState = GameObject.FindGameObjectWithTag("DDOL").GetComponent<DDOL>();
-        cm = GameObject.FindGameObjectWithTag("VCamera").GetComponent<CinemachineVirtualCamera>();
+        audioManager = FindObjectOfType<AudioManager>();
+        cm = FindObjectOfType<CinemachineVirtualCamera>();
         Mario = Instantiate(MarioPreFab, new  Vector3(0.5f,1.5f, this.transform.position.z), Quaternion.identity);
         MarioControl = Mario.GetComponent<MarioController>();
         cm.Follow = Mario.transform;
@@ -57,9 +59,11 @@ public class GameController : MonoBehaviour
         PauseScreen.SetActive(true);
         PauseText.text = "Press any key to resume";
         Time.timeScale = 0f;
+        audioManager.playThemeSound(false);
       }else if(!isPaused){
         PauseScreen.SetActive(false);
         Time.timeScale = 1.0f;
+        audioManager.playThemeSound(true);
       }
       if(Input.anyKeyDown && isPaused){
         isPaused = false;
@@ -73,7 +77,7 @@ public class GameController : MonoBehaviour
           StartCoroutine(EndGame());
           
       }
-      if(!Mario && !revived){
+      if(!Mario && !revived &&!MarioControl.touchedPole){
         StartCoroutine(Respawn());
       }
       if(Mario){
