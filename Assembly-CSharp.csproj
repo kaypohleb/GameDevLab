@@ -44,7 +44,6 @@
      <Compile Include="Assets\Scripts\BrickEventManager.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Mushroom.cs" />
-     <Compile Include="Assets\Scripts\WallBlockFollowCamera.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <None Include="Assets\Fonts\LiberationSans - OFL.txt" />
     <Reference Include="UnityEngine">
