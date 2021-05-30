@@ -45,6 +45,7 @@ public class DDOL : MonoBehaviour
         scoreCount = startingScore;
     }
     public void TimetoScore(){
+        Debug.Log("TOS called");
         StartCoroutine(TimetoScoreRoller());
     }
     IEnumerator TimetoScoreRoller(){

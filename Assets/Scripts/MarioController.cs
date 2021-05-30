@@ -209,7 +209,6 @@ public class MarioController : MonoBehaviour
                 break;
             case "End":
                 touchedEnding = true;
-                Destroy(gameObject);
                 break;
         }
         
