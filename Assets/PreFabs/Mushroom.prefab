@@ -180,6 +180,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32768
   randomDirection: 0
-  MAXSPEED: 4
+  MAXSPEED: 3.5
   isGrounded: 0
-  checkRadius: 0.5
+  checkRadius: 0.35

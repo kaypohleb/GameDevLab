@@ -70,7 +70,8 @@ public class GameController : MonoBehaviour
         isPaused = true;
       }
       if(gameState.lifeCount <=0 || gameState.remainingTime <=0 || MarioControl.touchedEnding){
-          EndGame();
+          StartCoroutine(EndGame());
+          
       }
       if(!Mario && !revived){
         StartCoroutine(Respawn());
@@ -79,11 +80,6 @@ public class GameController : MonoBehaviour
         revived = false;
       }
     }
-    void EndGame(){
-      gameEnded = true;
-      SceneManager.LoadScene(1);
-      
-    }
     IEnumerator Respawn(){
       revived = true;
       gameState.KillLife(1);
@@ -91,4 +87,17 @@ public class GameController : MonoBehaviour
       SceneManager.LoadScene(0);
       yield return null;
     }
+    IEnumerator EndGame(){
+       gameEnded = true;
+       gameState.TimetoScore();
+      yield return new WaitForSeconds(5f);
+      SceneManager.LoadScene(1);
+    }
+    public void killedEnemyScore(){
+      gameState.addScore(100);
+    }
+    public void growScore(){
+      gameState.addScore(200);
+    }
+
 }

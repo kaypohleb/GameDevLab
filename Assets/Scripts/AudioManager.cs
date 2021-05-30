@@ -5,11 +5,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioClip[] audioClips;
-    AudioSource audioSource;
+    AudioSource[] audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponents<AudioSource>();
+        playThemeSound();
     }
 
     // Update is called once per frame
@@ -20,28 +21,45 @@ public class AudioManager : MonoBehaviour
 
     public void playJumpSound(bool grow){
         if(grow){
-            audioSource.PlayOneShot(audioClips[1]);
+            audioSource[0].PlayOneShot(audioClips[1]);
         }else{
-            audioSource.PlayOneShot(audioClips[0]);
+            audioSource[0].PlayOneShot(audioClips[0]);
         }
+    }
+    public void playPipeSound(){
+        audioSource[0].PlayOneShot(audioClips[2]);
     }
 
     public void playDieSound(){
-        audioSource.PlayOneShot(audioClips[5]);
+        audioSource[0].PlayOneShot(audioClips[5]);
     }
     
     public void playStompSound(){
-        audioSource.PlayOneShot(audioClips[4]);
+        audioSource[0].PlayOneShot(audioClips[4]);
     }
     public void playPowerSound(bool up){
-        if(audioSource.isPlaying){
-            audioSource.Stop();
+        if(audioSource[0].isPlaying){
+            audioSource[0].Stop();
         }
         if(up){
-            audioSource.PlayOneShot(audioClips[3]);
+            audioSource[0].PlayOneShot(audioClips[3]);
         }else{
-            audioSource.PlayOneShot(audioClips[2]);
+            audioSource[0].PlayOneShot(audioClips[2]);
         }
-        
+    }
+    public void playBumpSound(){
+        audioSource[0].PlayOneShot(audioClips[8]);
+    }
+    public void playPoleSound(){
+        audioSource[0].PlayOneShot(audioClips[6]);
+    }
+
+    public void playThemeSound(){
+        if(audioSource[1].isPlaying){
+            audioSource[1].Stop();
+        }
+        audioSource[1].loop = true;
+        audioSource[1].clip = audioClips[10];
+        audioSource[1].Play();
     }
 }

@@ -11,6 +11,7 @@ public class MarioController : MonoBehaviour
     Transform feetPos;
     [SerializeField] LayerMask whatisGround;
     AudioManager audioManager;
+    GameController gameController;
     bool isAlive = true;
     bool grow = false;
     public float MAXSPEED = 6f;
@@ -38,7 +39,8 @@ public class MarioController : MonoBehaviour
         marioBody = GetComponent<Rigidbody2D>();
         marioSpriteRenderer = GetComponent<SpriteRenderer>();
         marioBoxCollider = GetComponent<BoxCollider2D>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        gameController = FindObjectOfType<GameController>();
+        audioManager = FindObjectOfType<AudioManager>();
         marioAnimator = GetComponent<Animator>();
         marioAnimator.SetBool("Alive", true);
         Physics2D.queriesStartInColliders = true;
@@ -84,7 +86,7 @@ public class MarioController : MonoBehaviour
                 marioAnimator.SetBool("Running", false);
             }
 
-            if(Mathf.Abs(moveInput) > 0 && isGrounded == true){
+            if(Mathf.Abs(marioBody.velocity.x) > 0 && isGrounded == true){
                 marioAnimator.SetBool("Running", true);
             }
             if(isGrounded){
@@ -163,6 +165,7 @@ public class MarioController : MonoBehaviour
         switch(other.gameObject.tag){
             case "Pole":
                 touchedPole = true;
+                audioManager.playPoleSound();
                 StartCoroutine(slideDown());
                 break;
 
@@ -189,12 +192,14 @@ public class MarioController : MonoBehaviour
                 if(isAlive && IsDescending() && !hurtRecently){
                     BounceAfterKill();
                     Destroy(other.transform.parent.gameObject);
+                    gameController.killedEnemyScore();
                 }
                 break;
             case "Grow":
                 if(!grow && isAlive){
                     grow = true;
                     GrowControl(true);
+                    gameController.growScore();
                     Destroy(other.gameObject);
                 }
                 break;
@@ -220,6 +225,7 @@ public class MarioController : MonoBehaviour
         hurtRecently = false;
         marioAnimator.SetBool("ChangingSize", false);
         marioBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        transform.rotation = Quaternion.Euler(transform.rotation.x,transform.eulerAngles.y,transform.rotation.z);
         preventMovement = false;
     }
 
@@ -232,6 +238,7 @@ public class MarioController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         marioAnimator.SetBool("ChangingSize", false);
         marioBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        transform.rotation = Quaternion.Euler(transform.rotation.x,transform.eulerAngles.y,transform.rotation.z);
         preventMovement = false;
     }
     IEnumerator slideDown()  //  <-  its a standalone method

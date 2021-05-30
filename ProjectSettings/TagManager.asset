@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - HitBox
+  - HurtBox
+  - Killable
+  - Destroy
+  - Grow
+  - Foreground
+  - Pole
+  - Background
+  - End
+  - Bricks
+  - ItemBox
+  - VCamera
+  - DDOL
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - EnemiesHitBoxes
+  - EnemiesHurtBoxes
+  - PlayerHitBoxes
+  - Enemies
+  - Background
+  - Foreground
+  - Hidden
+  - Items
+  - Cameras
+  - Walkables
+  - Spawned
+  - ItemBox
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3875094009
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Obstacles
+    uniqueID: 2525895911
+    locked: 0
+  - name: Enemies
+    uniqueID: 3995314483
+    locked: 0
+  - name: Player
+    uniqueID: 3920123907
+    locked: 0
+  - name: Foreground
+    uniqueID: 1526413165
+    locked: 0

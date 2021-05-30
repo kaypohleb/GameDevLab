@@ -36,8 +36,22 @@ public class DDOL : MonoBehaviour
     }
     public void KillLife(int life){
         lifeCount--;
+        resetScore();
     }
     public void addScore(int score){
         scoreCount+=score;
+    }
+    private void resetScore(){
+        scoreCount = startingScore;
+    }
+    public void TimetoScore(){
+        StartCoroutine(TimetoScoreRoller());
+    }
+    IEnumerator TimetoScoreRoller(){
+       while(Mathf.RoundToInt(remainingTime)>0){
+            remainingTime--;
+            addScore(1);
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
