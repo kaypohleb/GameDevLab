@@ -86,7 +86,7 @@ public class MarioController : MonoBehaviour
                 marioAnimator.SetBool("Running", false);
             }
 
-            if(Mathf.Abs(marioBody.velocity.x) > 0 && isGrounded == true){
+            if(Mathf.Abs(marioBody.velocity.x) > 0.1f && isGrounded == true){
                 marioAnimator.SetBool("Running", true);
             }
             if(isGrounded){
