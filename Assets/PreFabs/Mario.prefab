@@ -153,6 +153,7 @@ MonoBehaviour:
   whatisGround:
     serializedVersion: 2
     m_Bits: 32768
+  isAlive: 1
   MAXSPEED: 6
   upSpeed: 9
   bounceSpeed: 10

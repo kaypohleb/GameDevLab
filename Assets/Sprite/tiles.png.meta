@@ -1838,6 +1838,9 @@ TextureImporter:
   - first:
       213: 21301222
     second: object_pipe_middle
+  - first:
+      213: 1807125615787039003
+    second: tile_groundbrick_broken
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -14702,6 +14705,27 @@ TextureImporter:
       bones: []
       spriteID: 6e705410000000000800000000000000
       internalID: 21301222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_groundbrick_broken
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 432
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b19de794c23341910800000000000000
+      internalID: 1807125615787039003
       vertices: []
       indices: 
       edges: []

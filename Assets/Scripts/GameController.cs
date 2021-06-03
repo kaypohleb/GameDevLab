@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
         gameState = GameObject.FindGameObjectWithTag("DDOL").GetComponent<DDOL>();
         audioManager = FindObjectOfType<AudioManager>();
         cm = FindObjectOfType<CinemachineVirtualCamera>();
-        Mario = Instantiate(MarioPreFab, new  Vector3(0.5f,1.5f, this.transform.position.z), Quaternion.identity);
+        Mario = Instantiate(MarioPreFab, new  Vector3(-2f,3.5f, this.transform.position.z), Quaternion.identity);
         MarioControl = Mario.GetComponent<MarioController>();
         cm.Follow = Mario.transform;
         PauseText = PauseScreen.GetComponentsInChildren<Text>()[0];
@@ -47,8 +47,10 @@ public class GameController : MonoBehaviour
       TimeText.text = Mathf.RoundToInt(gameState.remainingTime).ToString();
       if(!MarioControl.touchedPole){
         gameState.updateTime(Time.fixedDeltaTime);
+        
       }else if(!gameEnded){
         PoleCollider.isTrigger = true;
+        audioManager.PlayClearSound();
       }
       
       if(!hasStarted && isPaused){
@@ -63,7 +65,9 @@ public class GameController : MonoBehaviour
       }else if(!isPaused){
         PauseScreen.SetActive(false);
         Time.timeScale = 1.0f;
-        audioManager.playThemeSound(true);
+        if(MarioControl.isAlive && !gameEnded){
+          audioManager.playThemeSound(true);
+        }        
       }
       if(Input.anyKeyDown && isPaused){
         isPaused = false;

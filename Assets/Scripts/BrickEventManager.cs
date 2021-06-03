@@ -5,14 +5,17 @@ using UnityEngine;
 public class BrickEventManager : MonoBehaviour
 {
     Rigidbody2D BrickRigidBody;
+    bool BlockOccupied;
+    List<GameObject> ThingsOnBlock;
     // Start is called before the first frame update
     void Start()
     {
         BrickRigidBody = GetComponent<Rigidbody2D>();
+        ThingsOnBlock =  new List<GameObject>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         
     }
@@ -21,10 +24,17 @@ public class BrickEventManager : MonoBehaviour
         Debug.Log("Other: " + other.gameObject.tag);
         if (other.gameObject.tag == "Player"){
             BrickRigidBody.AddForce(new Vector2(0, BrickRigidBody.mass*50));
-	    }
-        if(other.gameObject.tag == "Enemies"){
+	    }else{
+            //store gameobject
+            ThingsOnBlock.Add(other.gameObject);
+        }
+        
+    }
+    private void OnCollisionExit(Collision other) {
+        if(other.gameObject.tag != "Player"){
             //store eneimies in list to bump
             Debug.Log("Enemy on block");
+            ThingsOnBlock.Remove(other.gameObject);
         }
     }
     bool ObjectMovedAndStopped(){

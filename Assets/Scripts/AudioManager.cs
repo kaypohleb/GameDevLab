@@ -32,6 +32,9 @@ public class AudioManager : MonoBehaviour
     }
 
     public void playDieSound(){
+        if(audioSource[1].clip == audioClips[10] && audioSource[1].isPlaying){
+            audioSource[1].Stop();
+        }
         audioSource[0].PlayOneShot(audioClips[5]);
     }
     
@@ -62,11 +65,21 @@ public class AudioManager : MonoBehaviour
                 audioSource[1].clip = audioClips[10];
                 loaded = true;
             }
-            if(!audioSource[1].isPlaying){
+            if(!audioSource[1].isPlaying && audioSource[1].clip == audioClips[10]){
                 audioSource[1].Play();
             }
         }else{
             audioSource[1].Pause();
         }
+    }
+
+    public void PlayClearSound(){
+        if(audioSource[1].clip == audioClips[10] && audioSource[1].isPlaying){
+            audioSource[1].Stop();
+        }
+        if(!audioSource[1].isPlaying){
+            audioSource[1].PlayOneShot(audioClips[11]);
+        }
+       
     }
 }

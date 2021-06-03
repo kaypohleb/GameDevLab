@@ -9,10 +9,12 @@ public class MarioController : MonoBehaviour
     BoxCollider2D marioBoxCollider;
     Animator marioAnimator;
     Transform feetPos;
+    BoxCollider2D hitBox;
+    BoxCollider2D hurtBox;
     [SerializeField] LayerMask whatisGround;
     AudioManager audioManager;
     GameController gameController;
-    bool isAlive = true;
+    public bool isAlive = true;
     bool grow = false;
     public float MAXSPEED = 6f;
     public float upSpeed = 9f;
@@ -42,6 +44,8 @@ public class MarioController : MonoBehaviour
         gameController = FindObjectOfType<GameController>();
         audioManager = FindObjectOfType<AudioManager>();
         marioAnimator = GetComponent<Animator>();
+        hitBox = gameObject.transform.GetChild(1).GetComponent<BoxCollider2D>();
+        hurtBox = gameObject.transform.GetChild(2).GetComponent<BoxCollider2D>();
         marioAnimator.SetBool("Alive", true);
         Physics2D.queriesStartInColliders = true;
     }
@@ -131,6 +135,7 @@ public class MarioController : MonoBehaviour
 
     private void OnDeath(){
         Debug.Log("I died");
+        isAlive = false;
         audioManager.playDieSound();
         marioBoxCollider.isTrigger = true;
         marioBody.constraints = RigidbodyConstraints2D.FreezePositionX;
@@ -143,8 +148,10 @@ public class MarioController : MonoBehaviour
         if(g){
                 Vector2 prevVel = marioBody.velocity;
                 transform.position= new Vector2(transform.position.x,transform.position.y + 0.5f);
-                marioBoxCollider.offset = new Vector2(marioBoxCollider.offset.x,-0.1f);
+                marioBoxCollider.offset = new Vector2(marioBoxCollider.offset.x,-0.15f);
                 marioBoxCollider.size = new Vector2(marioBoxCollider.size.x,1.8f);
+                hitBox.offset = new Vector2(hitBox.offset.x, hurtBox.offset.y*2+0.1f);
+                hurtBox.size = new Vector2(hurtBox.size.x, hurtBox.size.y*2+0.1f);
                 StartCoroutine(growing());
                 marioAnimator.SetBool("Growth", true);
                 marioBody.velocity = prevVel;
@@ -152,6 +159,8 @@ public class MarioController : MonoBehaviour
                 Vector2 prevVel = marioBody.velocity;
                 marioBoxCollider.size = new Vector2(marioBoxCollider.size.x,0.9f);
                 marioBoxCollider.offset = new Vector2(marioBoxCollider.offset.x,-0.05f);
+                 hitBox.offset = new Vector2(hitBox.offset.x, (hurtBox.offset.y-0.1f)/2);
+                hurtBox.size = new Vector2(hurtBox.size.x, (hurtBox.size.y-0.1f)/2);
                 StartCoroutine(hurting());
                 marioAnimator.SetBool("Growth", false);
                 transform.position= new Vector2(transform.position.x,transform.position.y -0.5f);

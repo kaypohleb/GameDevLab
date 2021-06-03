@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637582926757613113
-    m_Hash: 717581435
+      ticks: 637582946266727073
+    m_Hash: 1183514451
   m_LockFileStatus:
     m_FilePath: D:/Unity/Repos/GameDevLab/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637582926758503113
-    m_Hash: 4040668260
+      ticks: 637582946267985857
+    m_Hash: 145766402
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,12 +22,12 @@ m_LocalPackages:
 m_ProjectPath: D:/Unity/Repos/GameDevLab/Packages
 m_EditorVersion: 2021.1.6f1 (c0fade0cc7e9)
 m_ResolvedPackages:
-- packageId: com.unity.2d.animation@6.0.1
+- packageId: com.unity.2d.animation@6.0.3
   testable: 0
   isDirectDependency: 1
-  version: 6.0.1
+  version: 6.0.3
   source: 1
-  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.2d.animation@6.0.1
+  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.2d.animation@6.0.3
   assetPath: Packages/com.unity.2d.animation
   name: com.unity.2d.animation
   displayName: 2D Animation
@@ -37,12 +37,8 @@ m_ResolvedPackages:
     url: 
   category: 2D
   type: 
-  description: '2D Animation provides all the necessary tooling and runtime components
+  description: 2D Animation provides all the necessary tooling and runtime components
     for skeletal animation using Sprites.
-
-
-    Documentation for v6.0 is currently
-    being updated.'
   status: 4
   errors: []
   versions:
@@ -153,13 +149,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637526396800000000
+  datePublishedTicks: 637563730420000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 1de540a091021db4de462f30f9a458120ea465ae
+    revision: 8752f08cdd2aa2a0153c9c70e2affdb28ccfe4bd
     path: 
   unityLifecycle:
     version: 6.0.1
@@ -240,12 +236,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 5.0.0
     nextVersion: 
-- packageId: com.unity.2d.psdimporter@5.0.1
+- packageId: com.unity.2d.psdimporter@5.0.3
   testable: 0
   isDirectDependency: 1
-  version: 5.0.1
+  version: 5.0.3
   source: 1
-  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.2d.psdimporter@5.0.1
+  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.2d.psdimporter@5.0.3
   assetPath: Packages/com.unity.2d.psdimporter
   name: com.unity.2d.psdimporter
   displayName: 2D PSD Importer
@@ -255,13 +251,9 @@ m_ResolvedPackages:
     url: 
   category: 2D
   type: 
-  description: 'A ScriptedImporter for importing Adobe Photoshop PSB (Photoshop Big)
+  description: A ScriptedImporter for importing Adobe Photoshop PSB (Photoshop Big)
     file format. The ScriptedImporter is currently targeted for users who wants to
     create multi Sprite character animation using Unity 2D Animation Package.
-
-
-    Documentation
-    for v5.0 is currently being updated.'
   status: 4
   errors: []
   versions:
@@ -309,7 +301,7 @@ m_ResolvedPackages:
   - name: com.unity.2d.common
     version: 5.0.0
   - name: com.unity.2d.animation
-    version: 6.0.1
+    version: 6.0.3
   - name: com.unity.2d.sprite
     version: 1.0.0
   resolvedDependencies:
@@ -328,7 +320,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.uielementsnative
     version: 1.0.0
   - name: com.unity.2d.animation
-    version: 6.0.1
+    version: 6.0.3
   - name: com.unity.mathematics
     version: 1.2.1
   - name: com.unity.modules.animation
@@ -349,13 +341,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637526398240000000
+  datePublishedTicks: 637563730770000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 1de540a091021db4de462f30f9a458120ea465ae
+    revision: 8752f08cdd2aa2a0153c9c70e2affdb28ccfe4bd
     path: 
   unityLifecycle:
     version: 5.0.1
@@ -821,12 +813,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.3.9
     nextVersion: 
-- packageId: com.unity.ide.rider@3.0.6
+- packageId: com.unity.ide.rider@3.0.7
   testable: 0
   isDirectDependency: 1
-  version: 3.0.6
+  version: 3.0.7
   source: 1
-  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.ide.rider@3.0.6
+  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.ide.rider@3.0.7
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -891,23 +883,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637545389350000000
+  datePublishedTicks: 637572251600000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: 0be4afe0ac726df5939a6ce50f8b7575968c5d6f
+    revision: 3007c42a679bbe2c082c276e8d79279110964553
     path: 
   unityLifecycle:
     version: 3.0.6
     nextVersion: 
-- packageId: com.unity.ide.visualstudio@2.0.7
+- packageId: com.unity.ide.visualstudio@2.0.9
   testable: 0
   isDirectDependency: 1
-  version: 2.0.7
+  version: 2.0.9
   source: 1
-  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.ide.visualstudio@2.0.7
+  resolvedPath: D:\Unity\Repos\GameDevLab\Library\PackageCache\com.unity.ide.visualstudio@2.0.9
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -968,13 +960,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637486638490000000
+  datePublishedTicks: 637580705480000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-    revision: dec282022c7a95fada560c36f53da9dd155a142c
+    revision: c7cd4c6319806423b3d918b3e9599244e3993d41
     path: 
   unityLifecycle:
     version: 2.0.7
@@ -4165,9 +4157,24 @@ m_ResolvedPackages:
   errors: []
   versions:
     all:
+    - 4.0.0-preview
+    - 4.0.0
+    - 4.0.7-preview
+    - 4.0.7
+    - 4.0.8-preview
+    - 4.0.9
+    - 4.1.0-preview
+    - 4.1.0
+    - 4.2.0
+    - 4.3.0
+    - 4.3.1
     - 4.3.2
+    - 4.6.0-preview
+    - 4.7.0-preview
     compatible:
     - 4.3.2
+    - 4.6.0-preview
+    - 4.7.0-preview
     verified: 4.3.2
   dependencies: []
   resolvedDependencies: []
@@ -4186,7 +4193,7 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 0
+  datePublishedTicks: 637509898070000000
   documentationUrl: 
   hasRepository: 1
   repository:
