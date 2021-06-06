@@ -7,22 +7,23 @@ public class BrickEventManager : MonoBehaviour
     Rigidbody2D BrickRigidBody;
     bool BlockOccupied;
     List<GameObject> ThingsOnBlock;
+    public GameObject prefab;
+    BoxCollider2D brickCollider;
+    SpriteRenderer brickSprite;
+    public GameObject TopCollider;
     // Start is called before the first frame update
     void Start()
     {
         BrickRigidBody = GetComponent<Rigidbody2D>();
+        brickCollider = TopCollider.GetComponent<BoxCollider2D>();
+        brickSprite = TopCollider.GetComponent<SpriteRenderer>();
         ThingsOnBlock =  new List<GameObject>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     private void OnCollisionEnter2D(Collision2D other) {
         Debug.Log("Other: " + other.gameObject.tag);
+        //Debug.Log(broken);
         if (other.gameObject.tag == "Player"){
+            //Debug.Log("hit: " + other.gameObject.tag);
             BrickRigidBody.AddForce(new Vector2(0, BrickRigidBody.mass*50));
 	    }else{
             //store gameobject
@@ -47,10 +48,12 @@ public class BrickEventManager : MonoBehaviour
 	    }
 
         transform.localPosition  =  Vector3.zero;
-
     }
-
-
     
-
+    public void onKill(){
+        for (int x =  0; x<5; x++){
+			Instantiate(prefab, transform.position, Quaternion.identity);
+		}
+        Destroy(gameObject.transform.parent.gameObject);
+    }
 }

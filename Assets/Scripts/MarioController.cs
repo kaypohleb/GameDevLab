@@ -14,6 +14,7 @@ public class MarioController : MonoBehaviour
     [SerializeField] LayerMask whatisGround;
     AudioManager audioManager;
     GameController gameController;
+    ParticleSystem marioParticles;
     public bool isAlive = true;
     bool grow = false;
     public float MAXSPEED = 6f;
@@ -33,6 +34,7 @@ public class MarioController : MonoBehaviour
     public bool touchedPole = false;
     public bool touchedEnding = false;
     private bool preventMovement = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,7 @@ public class MarioController : MonoBehaviour
         hurtBox = gameObject.transform.GetChild(2).GetComponent<BoxCollider2D>();
         marioAnimator.SetBool("Alive", true);
         Physics2D.queriesStartInColliders = true;
+        marioParticles = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -96,6 +99,11 @@ public class MarioController : MonoBehaviour
             if(isGrounded){
                 marioAnimator.SetBool("Jumping", false);
             } 
+            else{
+                if(marioParticles.isPlaying){
+                    marioParticles.Stop();
+                }
+            }
 
             //slowing down
             if((moveInput > 0 && marioBody.velocity.x < 0) || (moveInput < 0 && marioBody.velocity.x > 0)){
@@ -177,11 +185,22 @@ public class MarioController : MonoBehaviour
                 audioManager.playPoleSound();
                 StartCoroutine(slideDown());
                 break;
-
+            case "Ground":
+                marioParticles.Play();
+                break;
+            case "Foreground":
+                marioParticles.Play();
+                break;
+            case "Bricks":
+                if(grow){
+                    //Debug.Log("Bricks:" + other.gameObject.name);
+                    other.gameObject.GetComponent<BrickEventManager>().onKill();
+                }
+                break;  
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Trigger: " + other.gameObject.tag);
+        //Debug.Log("Trigger: " + other.gameObject.tag);
         switch (other.gameObject.tag)
         {
             case "HitBox":
@@ -200,7 +219,7 @@ public class MarioController : MonoBehaviour
             case "HurtBox":
                 if(isAlive && IsDescending() && !hurtRecently){
                     BounceAfterKill();
-                    Destroy(other.transform.parent.gameObject);
+                    other.transform.parent.GetComponent<EnemyController>().onDeath();
                     gameController.killedEnemyScore();
                 }
                 break;

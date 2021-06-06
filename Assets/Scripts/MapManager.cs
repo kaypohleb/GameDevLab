@@ -51,12 +51,12 @@ public class MapManager : MonoBehaviour
             TileBase tilewalked = tilemap.GetTile(pPos);
             if(tilewalked){
                 if(  !posTiletoData.ContainsKey(pPos)){
-                Debug.Log(datafromTiles[tilewalked].tillBroken);
+                //Debug.Log(datafromTiles[tilewalked].tillBroken);
                 posTiletoData.Add(pPos, new TileTrigger(datafromTiles[tilewalked].tillBroken, true));
             }
             else{
                 StartCoroutine(BreakBlock(pPos, posTiletoData[pPos]));  
-                Debug.Log(posTiletoData[pPos].tillBroken); 
+                //Debug.Log(posTiletoData[pPos].tillBroken); 
             }
             }
         }

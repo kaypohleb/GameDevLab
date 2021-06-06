@@ -37,8 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\ScriptableObject\TileData.cs" />
+     <Compile Include="Assets\Scripts\KillAfter.cs" />
      <Compile Include="Assets\Scripts\MarioController.cs" />
      <Compile Include="Assets\Scripts\ItemBox.cs" />
+     <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\DDOL.cs" />
      <Compile Include="Assets\Scripts\GameOverManager.cs" />
@@ -47,6 +49,7 @@
      <Compile Include="Assets\Scripts\Mushroom.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\MapManager.cs" />
+     <Compile Include="Assets\Scripts\Debris.cs" />
      <None Include="Assets\Fonts\LiberationSans - OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Unity/2021.1.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

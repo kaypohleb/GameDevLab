@@ -37,7 +37,7 @@ TagManager:
   - Walkables
   - Spawned
   - ItemBox
-  - 
+  - Effects
   - 
   - 
   - 
@@ -52,6 +52,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Sky
+    uniqueID: 1606941467
+    locked: 0
+  - name: Moon
+    uniqueID: 2156313487
+    locked: 0
   - name: Background
     uniqueID: 3875094009
     locked: 0

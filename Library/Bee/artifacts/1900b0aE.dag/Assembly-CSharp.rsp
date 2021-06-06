@@ -356,13 +356,16 @@
 "Assets/Scripts/AudioManager.cs"
 "Assets/Scripts/BrickEventManager.cs"
 "Assets/Scripts/DDOL.cs"
+"Assets/Scripts/Debris.cs"
 "Assets/Scripts/EnemyController.cs"
 "Assets/Scripts/GameController.cs"
 "Assets/Scripts/GameOverManager.cs"
 "Assets/Scripts/ItemBox.cs"
+"Assets/Scripts/KillAfter.cs"
 "Assets/Scripts/MapManager.cs"
 "Assets/Scripts/MarioController.cs"
 "Assets/Scripts/Mushroom.cs"
+"Assets/Scripts/ParallaxBackground.cs"
 -langversion:8.0
 
 /deterministic
