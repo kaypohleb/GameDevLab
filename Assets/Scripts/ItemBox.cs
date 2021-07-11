@@ -8,13 +8,13 @@ public class ItemBox : MonoBehaviour
     [SerializeField] GameObject consummablePrefab;
     private bool hit =  false;
     Animator ItemBoxAnimator;
-    AudioManager audioManager;
+    public GameEvent OnItemBoxHit;
     void Start()
     {
         ItemBoxAnimator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         springJoint = GetComponent<SpringJoint2D>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
         ItemBoxAnimator.SetBool("Hit", false);
         hit =  false;
     }
@@ -23,7 +23,7 @@ public class ItemBox : MonoBehaviour
         //Debug.Log("Other: " + other.gameObject.tag);
         if (other.gameObject.tag == "Player" &&  !hit){
 		    hit  =  true;
-            audioManager.playBumpSound();
+            OnItemBoxHit.Raise();
             rigidBody.AddForce(new Vector2(0, rigidBody.mass*50));
             Instantiate(consummablePrefab, new  Vector3(this.transform.position.x, this.transform.position.y  +  1.0f, this.transform.position.z), Quaternion.identity);
             ItemBoxAnimator.SetBool("Hit", true);

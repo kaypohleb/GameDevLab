@@ -1,6 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public  enum PowerType{
+	    jump =  0,
+        grow =  1
+}
+[System.Serializable]
+public class PowerUp{
+    public Sprite sprite;
+    public PowerType powerType;
+    public PowerUp(Sprite s, PowerType p){
+        this.sprite  =  s;
+		this.powerType  =  p;
+	}
+}
 
 public class Mushroom : MonoBehaviour
 {
@@ -8,27 +22,35 @@ public class Mushroom : MonoBehaviour
     Transform feetPos;
     [SerializeField] LayerMask whatisGround;
     float moveInput;
-    public bool randomDirection;
-    public float MAXSPEED = 6f;
-    public bool isGrounded = false;
-    public float checkRadius = 0.1f;
-    bool hasLanded;
+    [SerializeField] bool randomDirection;
+    [SerializeField] float MAXSPEED = 6f;
+    [SerializeField] bool isGrounded = false;
+    [SerializeField] float checkRadius = 0.1f;
+    public PowerUp powerUp;
     public float stuckLife = 0.1f;
     private float stuckTimer = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
-        hasLanded = false;
+        switch(gameObject.tag){
+            case "Grow":
+                powerUp = new PowerUp(GetComponent<SpriteRenderer>().sprite, PowerType.grow);
+                break;
+            case "JumpBoost":
+                powerUp = new PowerUp(GetComponent<SpriteRenderer>().sprite, PowerType.jump);
+                break;
+        }
         randomDirection = Random.value > 0.5f;
         mushroomBody = GetComponent<Rigidbody2D>(); 
         feetPos = gameObject.transform.GetChild(0);
+        
         stuckTimer = stuckLife;
         //mushroomBody.AddForce(Vector2.up * MAXSPEED,  ForceMode2D.Impulse);
     } 
     private void Update() {
         if(mushroomBody.velocity.x < 0.01f && mushroomBody.velocity.x > -0.01f && isGrounded){
             if(stuckTimer>0){
-                Debug.Log("Stuck");
+                //Debug.Log("Stuck");
                 stuckTimer -= Time.fixedDeltaTime;
             }else{
                 stuckTimer = stuckLife;

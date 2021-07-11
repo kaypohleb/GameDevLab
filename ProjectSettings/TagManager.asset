@@ -18,6 +18,7 @@ TagManager:
   - ItemBox
   - VCamera
   - DDOL
+  - JumpBoost
   layers:
   - Default
   - TransparentFX

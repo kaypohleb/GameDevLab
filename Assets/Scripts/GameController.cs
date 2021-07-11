@@ -14,27 +14,28 @@ public class GameController : MonoBehaviour
     MarioController MarioControl;
     AudioManager audioManager;
     GameObject Mario;
+    CinemachineVirtualCamera cm;
     public Collider2D PoleCollider;
     Text PauseText;
-    CinemachineVirtualCamera cm;
     public bool revived = false;
     public bool isPaused;
     public bool hasStarted;
-    public bool touchedPole;
-    public bool gameEnded = false;
-    private DDOL gameState;
+    public bool stageEnded = false;
+    public FloatReference remainingTime;
+    public IntReference scoreCount;
+    public IntReference lifeCount;
+	  public IntReference sceneNumber;
 
     void Awake()
     {
         Time.timeScale = 0f;
         isPaused = true;
         hasStarted = false;
-        gameEnded = false;
-        gameState = GameObject.FindGameObjectWithTag("DDOL").GetComponent<DDOL>();
+        stageEnded = false;
         audioManager = FindObjectOfType<AudioManager>();
-        cm = FindObjectOfType<CinemachineVirtualCamera>();
-        Mario = Instantiate(MarioPreFab, new  Vector3(-2f,3.5f, this.transform.position.z), Quaternion.identity);
+        Mario = Instantiate(MarioPreFab, MarioPreFab.transform.position, Quaternion.identity);
         MarioControl = Mario.GetComponent<MarioController>();
+        cm = FindObjectOfType<CinemachineVirtualCamera>();
         cm.Follow = Mario.transform;
         PauseText = PauseScreen.GetComponentsInChildren<Text>()[0];
         PoleCollider = GameObject.FindGameObjectWithTag("Pole").GetComponent<Collider2D>();
@@ -42,17 +43,15 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      LifeText.text = gameState.lifeCount.ToString();
-      ScoreText.text = gameState.scoreCount.ToString();
-      TimeText.text = Mathf.RoundToInt(gameState.remainingTime).ToString();
-      if(!MarioControl.touchedPole){
-        gameState.updateTime(Time.fixedDeltaTime);
-        
-      }else if(!gameEnded){
-        PoleCollider.isTrigger = true;
-        audioManager.PlayClearSound();
-      }
       
+      LifeText.text = lifeCount.Value.ToString();
+      ScoreText.text = scoreCount.Value.ToString();
+      TimeText.text = Mathf.RoundToInt(remainingTime.Value).ToString();
+      if(remainingTime.Value <=0){
+        stageEnded = true;
+        Debug.Log("gameEnded");
+        StartCoroutine(EndGame());
+      }
       if(!hasStarted && isPaused){
         PauseScreen.SetActive(true);
         PauseText.text = "Press any key to start";
@@ -65,7 +64,7 @@ public class GameController : MonoBehaviour
       }else if(!isPaused){
         PauseScreen.SetActive(false);
         Time.timeScale = 1.0f;
-        if(MarioControl.isAlive && !gameEnded){
+        if(MarioControl.isAlive && !stageEnded){
           audioManager.playThemeSound(true);
         }        
       }
@@ -77,41 +76,46 @@ public class GameController : MonoBehaviour
         Debug.Log("P is pressed");
         isPaused = true;
       }
-      if(gameState.lifeCount <=0 || gameState.remainingTime <=0 || MarioControl.touchedEnding){
-        gameEnded = true;
-        Debug.Log("gameEnded");
-        if(MarioControl.touchedEnding){
-          StartCoroutine(EndGame());
-        }else{
-          SceneManager.LoadScene(1);
-        }
-        
-      }
-      if(!Mario && !revived && !MarioControl.touchedPole){
-        StartCoroutine(Respawn());
-      }
       if(Mario){
         revived = false;
       }
     }
     IEnumerator Respawn(){
       revived = true;
-      gameState.KillLife(1);
       yield return new WaitForSeconds(2f);
-      SceneManager.LoadScene(0);
+      SceneManager.LoadScene(sceneNumber.Value);
       yield return null;
     }
     IEnumerator EndGame(){
-      MarioControl.gameObject.SetActive(false);
-      gameState.TimetoScore();
+      Mario.gameObject.SetActive(false);
       yield return new WaitForSeconds(2f);
-      SceneManager.LoadScene(1);
+      SceneManager.LoadScene(0);
     }
-    public void killedEnemyScore(){
-      gameState.addScore(100);
+    public void ClearStage(){
+      PoleCollider.isTrigger = true;
+      audioManager.PlayClearSound();
     }
-    public void growScore(){
-      gameState.addScore(200);
+    IEnumerator NextLevel(){
+      Mario.gameObject.SetActive(false);
+      yield return new WaitForSeconds(3f);
+      SceneManager.LoadScene(sceneNumber.Value);
     }
+
+    public void EndTheGame(){
+      stageEnded = true;
+      Debug.Log(lifeCount.Value);
+      if(lifeCount.Value>1){
+        StartCoroutine(Respawn());
+      }else{
+        Debug.Log("gameEnded");
+        StartCoroutine(EndGame());
+      }
+    }
+
+    public void toNextStage(){
+      stageEnded = true;
+      StartCoroutine(NextLevel());
+    }
+    
 
 }

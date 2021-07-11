@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class BrickEventManager : MonoBehaviour
 {
+    public GameConstants gameConstants;
     Rigidbody2D BrickRigidBody;
     bool BlockOccupied;
     List<GameObject> ThingsOnBlock;
-    public GameObject prefab;
+    [SerializeField] GameObject prefab;
     BoxCollider2D brickCollider;
     SpriteRenderer brickSprite;
-    public GameObject TopCollider;
+    [SerializeField] GameObject TopCollider;
+    public GameEvent OnBreakBlock;
+    public GameEvent OnBumpBlock;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class BrickEventManager : MonoBehaviour
         Debug.Log("Other: " + other.gameObject.tag);
         //Debug.Log(broken);
         if (other.gameObject.tag == "Player"){
+            OnBumpBlock.Raise();
             //Debug.Log("hit: " + other.gameObject.tag);
             BrickRigidBody.AddForce(new Vector2(0, BrickRigidBody.mass*50));
 	    }else{
@@ -51,7 +55,8 @@ public class BrickEventManager : MonoBehaviour
     }
     
     public void onKill(){
-        for (int x =  0; x<5; x++){
+        OnBreakBlock.Raise();
+        for (int x =  0; x<gameConstants.spawnNumberOfDebris; x++){
 			Instantiate(prefab, transform.position, Quaternion.identity);
 		}
         Destroy(gameObject.transform.parent.gameObject);

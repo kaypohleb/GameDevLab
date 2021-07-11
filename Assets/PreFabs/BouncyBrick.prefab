@@ -73,7 +73,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4682072128818407552}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1e692c879be12e4429e487fa388226df, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -273,5 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442828c106bae89468c2c49b5389e7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 7cc5e48ca631fdd4d88180e576e0785f, type: 2}
   prefab: {fileID: 8110694674716642694, guid: 0bad13619448c68439aa03e12d4cab64, type: 3}
   TopCollider: {fileID: 4682072128818407552}
+  OnBreakBlock: {fileID: 11400000, guid: 4cfc5e5cd9a4cc54e9ffbc6ed5a0d345, type: 2}
+  OnBumpBlock: {fileID: 11400000, guid: 8da1eb845a6516646aaf0ea79fcf0a2f, type: 2}

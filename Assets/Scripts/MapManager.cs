@@ -6,7 +6,6 @@ public class MapManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Tilemap tilemap;
-    
     [SerializeField] List<TileData> tileDatas;
     [SerializeField] Tile tiletoswap;   
     class TileTrigger{
@@ -62,6 +61,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
+   
     IEnumerator BreakBlock(Vector3Int Pos, TileTrigger t){
         
         if(t.canBreak){

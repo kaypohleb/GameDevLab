@@ -5,9 +5,9 @@ using UnityEngine;
 public class ParallaxBackground : MonoBehaviour
 {
     [SerializeField] Transform cam;
-    public float relativeMove = 0.3f;
-    public float offset = 0;
-    public bool backwards = true;
+    [SerializeField] float relativeMove = 0.3f;
+    [SerializeField] float offset = 0;
+    [SerializeField] bool backwards = true;
 
     // Update is called once per frame
     void Update()

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class KillAfter : MonoBehaviour
 {
-    public float TTL = 0.25f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Destroy(gameObject,TTL);
+    public GameConstants gameConstants;
+
+    private void Start() {
+        Destroy(gameObject, gameConstants.explosionTTL);    
     }
 }

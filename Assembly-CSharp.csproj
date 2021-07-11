@@ -36,20 +36,43 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\ScriptableObject\TileData.cs" />
-     <Compile Include="Assets\Scripts\KillAfter.cs" />
+     <Compile Include="Assets\Scripts\StatController.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\TileData.cs" />
+     <Compile Include="Assets\Scripts\KeyCodeEventListener.cs" />
+     <Compile Include="Assets\Scripts\CentralManager.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\FloatVariable.cs" />
+     <Compile Include="Assets\ScriptableObject\Specific\PowerUpCollection.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\IntVariable.cs" />
+     <Compile Include="Assets\Scripts\Debris.cs" />
+     <Compile Include="Assets\Scripts\PowerUpManager.cs" />
+     <Compile Include="Assets\ScriptableObject\IntEvent.cs" />
      <Compile Include="Assets\Scripts\MarioController.cs" />
      <Compile Include="Assets\Scripts\ItemBox.cs" />
      <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\FloatReference.cs" />
+     <Compile Include="Assets\Scripts\PowerUpEventListener.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
-     <Compile Include="Assets\Scripts\DDOL.cs" />
+     <Compile Include="Assets\Scripts\IntEventListener.cs" />
      <Compile Include="Assets\Scripts\GameOverManager.cs" />
      <Compile Include="Assets\Scripts\BrickEventManager.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\FloatReferenceDrawer.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
+     <Compile Include="Assets\ScriptableObject\GameConstants.cs" />
+     <Compile Include="Assets\Scripts\GameEventListener.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\BoolVariable.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\BoolReferenceDrawer.cs" />
+     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
      <Compile Include="Assets\Scripts\Mushroom.cs" />
+     <Compile Include="Assets\ScriptableObject\GameEvent.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\IntReference.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\KillAfter.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\IntReferenceDrawer.cs" />
+     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+     <Compile Include="Assets\ScriptableObject\PowerUpEvent.cs" />
+     <Compile Include="Assets\ScriptableObject\Generic\BoolReference.cs" />
+     <Compile Include="Assets\ScriptableObject\KeyCodeEvent.cs" />
      <Compile Include="Assets\Scripts\MapManager.cs" />
-     <Compile Include="Assets\Scripts\Debris.cs" />
      <None Include="Assets\Fonts\LiberationSans - OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Unity/2021.1.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

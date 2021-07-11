@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 1353513951}
   - component: {fileID: 1353513950}
   - component: {fileID: 1353513949}
+  - component: {fileID: 1353513952}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -351,6 +352,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1353513952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353513948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1425249924
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +726,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0a7bc08906d7b4a819745231ab79c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 7cc5e48ca631fdd4d88180e576e0785f, type: 2}
+  sceneNumber:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 6f189688caf1bfc4fb9c59dccd921d72, type: 2}
+  scoreCount:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 53ed11e032d96b24db37503e878a36a0, type: 2}
+  remainingTime:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e40b2f0e107298441b26fe88d8cd2835, type: 2}
+  lifeCount:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: b95dee09d7328cf438f33d3cbb73403d, type: 2}
+  gameOver:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 02e683a90a39f16499dca50ab5a1a509, type: 2}
 --- !u!4 &2049674158
 Transform:
   m_ObjectHideFlags: 0
